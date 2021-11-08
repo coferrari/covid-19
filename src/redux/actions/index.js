@@ -1,6 +1,6 @@
 import axios from "axios";
 import apiParams from "../../config";
-import { GET_ALL, SEARCH_COUNTRY } from "./types";
+import { GET_ALL, SEARCH_COUNTRY, CLEAR_DETAIL } from "./types";
 
 const options = {
   method: apiParams.GET,
@@ -40,5 +40,11 @@ export const searchCountry = (country) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+};
+
+export const clearDetail = () => {
+  return {
+    type: CLEAR_DETAIL,
   };
 };
