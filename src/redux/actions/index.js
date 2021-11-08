@@ -1,6 +1,6 @@
 import axios from "axios";
 import apiParams from "../../config";
-import { GET_ALL } from "./types";
+import { GET_ALL, SEARCH_COUNTRY } from "./types";
 
 const options = {
   method: apiParams.GET,
@@ -18,6 +18,22 @@ export const getAll = () => {
       .then((response) => {
         dispatch({
           type: GET_ALL,
+          payload: response.data.response,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+export const searchCountry = (country) => {
+  return (dispatch) => {
+    axios
+      .request({ ...options, ...{ params: { country } } })
+      .then((response) => {
+        dispatch({
+          type: SEARCH_COUNTRY,
           payload: response.data.response,
         });
       })
