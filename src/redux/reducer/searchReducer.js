@@ -1,15 +1,16 @@
+import { SEARCH_COUNTRY } from "../actions/types";
+
 const initialState = {
-    search: {}
+    search: []
 }
 
 const searchReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case "Hola":
+        case SEARCH_COUNTRY:
             return {
-                ...state
+                ...state,
+                search: payload
             }
-            
-    
         default:
             return state;
     }
