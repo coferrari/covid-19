@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { searchCountry } from "../../redux/actions";
+import { clearDetail, searchCountry } from "../../redux/actions";
 import { formatNumber } from "../../utils/index";
 
 const Details = () => {
@@ -13,6 +13,9 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(searchCountry(country));
+    return() => {
+      dispatch(clearDetail())
+    }
   }, [dispatch]);
 
   return (
