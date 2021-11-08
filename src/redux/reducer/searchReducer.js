@@ -1,19 +1,24 @@
-import { SEARCH_COUNTRY } from "../actions/types";
+import { SEARCH_COUNTRY, CLEAR_DETAIL } from "../actions/types";
 
 const initialState = {
-    search: []
-}
+  search: [],
+};
 
 const searchReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-        case SEARCH_COUNTRY:
-            return {
-                ...state,
-                search: payload
-            }
-        default:
-            return state;
-    }
-}
+  switch (type) {
+    case SEARCH_COUNTRY:
+      return {
+        ...state,
+        search: payload,
+      };
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        search: [],
+      };
+    default:
+      return state;
+  }
+};
 
 export default searchReducer;
