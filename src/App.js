@@ -7,11 +7,11 @@ function App() {
     <div>
       <BrowserRouter>
         <Nav />
+        <Main/>
         <Routes>
           <Route path="/" component={Main}>
           </Route>
         </Routes>
-        Covid-19
       </BrowserRouter>
     </div>
   );
