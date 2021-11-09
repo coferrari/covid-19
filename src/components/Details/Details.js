@@ -9,8 +9,6 @@ const Details = () => {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => state.search);
 
-  console.log(search);
-
   useEffect(() => {
     dispatch(searchCountry(country));
     return() => {
@@ -18,14 +16,19 @@ const Details = () => {
     }
   }, [dispatch]);
 
+  const YYYY = search[0]?.time.slice(0, 4)
+  const MM = search[0]?.time.slice(5, 7)
+  const DD = search[0]?.time.slice(8, 10)
+  const HH = search[0]?.time.slice(11, 13)
+  const MIN = search[0]?.time.slice(14, 16)
+
   return (
     <div>
       {search[0] && (
         <div>
           <h2>Country: {search[0].country}</h2>
-          <h3>Continent: {search[0].continent}</h3>
-          <p>Date: {search[0].day}</p>
-          <p>Last update: {search[0].time}</p>
+          <h3>Continent: {search[0].continent ? search[0].continent : "Not specified" }</h3>
+          <p>Last update: {`${MM}/${DD}/${YYYY} ${HH}:${MIN}`}</p>
           <p>Population: {search[0].population ? formatNumber(search[0].population) : 0}</p>
           <div>
             Cases:
