@@ -7,7 +7,6 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Nav />
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route exact path="country/:country" element={<Details />} />
