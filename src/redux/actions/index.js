@@ -1,6 +1,12 @@
 import axios from "axios";
 import apiParams from "../../config";
-import { GET_ALL, SEARCH_COUNTRY, CLEAR_DETAIL } from "./types";
+import {
+  GET_ALL,
+  SEARCH_COUNTRY,
+  CLEAR_DETAIL,
+  COUNTRY_ORDER,
+  COUNTRY_FILTER,
+} from "./types";
 
 const options = {
   method: apiParams.GET,
@@ -46,5 +52,19 @@ export const searchCountry = (country) => {
 export const clearDetail = () => {
   return {
     type: CLEAR_DETAIL,
+  };
+};
+
+export const countryOrder = (order) => {
+  return {
+    type: COUNTRY_ORDER,
+    payload: order,
+  };
+};
+
+export const filterCountries = (country) => {
+  return {
+    type: COUNTRY_FILTER,
+    payload: country,
   };
 };
