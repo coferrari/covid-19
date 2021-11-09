@@ -1,23 +1,21 @@
 import React, { useEffect } from "react";
 import { getAll } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import Dashboard from "../Dashboard/Dashboard";
 import Statistics from "../Statistics/Statistics";
-import SearchBar from "../SearchBar/SearchBar";
+import Nav from "../Nav/Nav";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { statistics } = useSelector((state) => state.statistics);
+  const { filteredStatistics, loading, requestAPI } = useSelector((state) => state.statistics);
 
   useEffect(() => {
-    dispatch(getAll());
-  }, [dispatch]);
+    if (loading) dispatch(getAll());
+  }, [dispatch, loading]);
 
   return (
-    <div className="container">
-      <Dashboard />
-      <SearchBar />
-      <Statistics statistics={statistics} />
+    <div>
+      <Nav />
+      <Statistics statistics={filteredStatistics} loading={loading} requestAPI={requestAPI} />
     </div>
   );
 };
