@@ -6,7 +6,6 @@ const Statistics = ({ statistics, loading, requestAPI }) => {
   return (
     <div className="container">
       {loading && requestAPI && <div>loading updated COVID-19 data...</div>}
-
       {!loading && statistics && (
         <Table striped bordered hover>
           <thead>
