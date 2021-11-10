@@ -5,63 +5,77 @@ import { clearDetail, searchCountry } from "../../redux/actions";
 import { formatNumber } from "../../utils/index";
 import Nav from "../Nav/Nav";
 import NotFound from "../NotFound/NotFound";
+import { Table } from "react-bootstrap";
+import DetailsItems from "../../DetailsItems/DetailsItems";
+import style from "./Details.module.css";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Details = () => {
   const { country } = useParams();
   const dispatch = useDispatch();
   const { search, requestAPI } = useSelector((state) => state.search);
+  const criteria = ["cases", "deaths", "tests"];
 
   useEffect(() => {
     dispatch(searchCountry(country));
-    return() => {
-      dispatch(clearDetail())
-    }
+    return () => {
+      dispatch(clearDetail());
+    };
   }, [dispatch, country]);
 
-  const YYYY = search[0]?.time.slice(0, 4)
-  const MM = search[0]?.time.slice(5, 7)
-  const DD = search[0]?.time.slice(8, 10)
-  const HH = search[0]?.time.slice(11, 13)
-  const MIN = search[0]?.time.slice(14, 16)
+  const YYYY = search[0]?.time.slice(0, 4);
+  const MM = search[0]?.time.slice(5, 7);
+  const DD = search[0]?.time.slice(8, 10);
+  const HH = search[0]?.time.slice(11, 13);
+  const MIN = search[0]?.time.slice(14, 16);
 
   return (
     <div>
-      {requestAPI && 
-        <div>
+      {requestAPI && (
+        <div className="container">
           <Nav />
-          <div>loading updated COVID-19 data...</div>
-        </div>}
-      {search[0] &&
-        <div>
+          <SearchBar />
+          <div className={style.loading}>Loading updated COVID-19 data...</div>
+        </div>
+      )}
+      {search[0] && (
+        <div className="container">
           <Nav />
-          <div className="container">
-            <h2>Country: {search[0].country}</h2>
-            <h3>Continent: {search[0].continent ? search[0].continent : "Not specified" }</h3>
-            <p>Last update: {`${MM}/${DD}/${YYYY} ${HH}:${MIN}`}</p>
-            <p>Population: {search[0].population ? formatNumber(search[0].population) : 0}</p>
+          <SearchBar />
+          <div>
+            <h2>{search[0].country}</h2>
+            <h4>
+              {search[0].continent ? search[0].continent : "Not specified"}
+            </h4>
             <div>
-              Cases:
-              <p>1M Pop: {search[0].cases["1M_pop"] ? formatNumber(search[0].cases["1M_pop"]) : 0}</p>
-              <p>Active: {search[0].cases.active ? formatNumber(search[0].cases.active) : 0}</p>
-              <p>Critical: {search[0].cases.critical ? formatNumber(search[0].cases.critical): 0}</p>
-              <p>New: {search[0].cases.new ? formatNumber(search[0].cases.new) : 0}</p>
-              <p>Recovered: {search[0].cases.recovered ? formatNumber(search[0].cases.recovered) : 0}</p>
-              <p>Total: {search[0].cases.total ? formatNumber(search[0].cases.total) : 0}</p>
+              <p>Last update: {`${MM}/${DD}/${YYYY} ${HH}:${MIN}`}</p>
+              <p>
+                Population:{" "}
+                {search[0].population ? formatNumber(search[0].population) : 0}
+              </p>
             </div>
-            <div>
-              Deaths:
-              <p>1M Pop: {search[0].deaths["1M_pop"] ? formatNumber(search[0].deaths["1M_pop"]): 0}</p>
-              <p>New: {search[0].deaths.new ? formatNumber(search[0].deaths.new) : 0}</p>
-              <p>Total: {search[0].deaths.total ? formatNumber(search[0].deaths.total) : 0}</p>
-            </div>
-            <div>
-              Tests:
-              <p>1M Pop: {search[0].tests["1M_pop"] ? formatNumber(search[0].tests["1M_pop"]) : 0}</p>
-              <p>Total: {search[0].deaths.total ? formatNumber(search[0].deaths.total) : 0}</p>
-            </div>
+            <Table striped bordered hover>
+              <thead>
+                <tr className={style.headers}>
+                  <th>{search[0]?.country}</th>
+                  <th>1M Pop</th>
+                  <th>Active</th>
+                  <th>Critical</th>
+                  <th>New</th>
+                  <th>Recovered</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {criteria?.map((c, i) => (
+                  <DetailsItems key={i} search={search} c={c} />
+                ))}
+              </tbody>
+            </Table>
           </div>
         </div>
-      }
+      )}
       {!requestAPI && !search.length && <NotFound />}
     </div>
   );

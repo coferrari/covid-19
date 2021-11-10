@@ -33,14 +33,16 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Link to="/">
-        <h1>COVID-19</h1>
-      </Link>
-      <div>global information</div>
+      <div className={style.header}>
+        <h5>Global statistics</h5>
+      </div>
       <div className={style.grid}>
         <div className={style.info}>
           {!requestAPI ? (
-            <h5>Countries with confirmed cases: {countCountries}</h5>
+            <div>
+              <h5>{countCountries}</h5>
+              <p>Countries with confirmed cases</p>
+            </div>
           ) : (
             <div className={style.loader}></div>
           )}

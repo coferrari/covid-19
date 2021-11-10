@@ -6,6 +6,8 @@ import {
   clearInputSearch,
 } from "../../redux/actions";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import style from "./SearchBar.module.css";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -33,16 +35,21 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <input
         onChange={(e) => handleChange(e)}
         value={searchInput}
         placeholder="Search..."
+        className={style.inputSearch}
       ></input>
       {pathname !== "/" ? (
-        <button onClick={(e) => handleSubmit(e)}>Search</button>
+        <Button variant="secondary" size="sm" onClick={(e) => handleSubmit(e)}>
+          Search
+        </Button>
       ) : (
-        <button onClick={(e) => handleClear(e)}>Clear filter</button>
+        <Button variant="secondary" size="sm" onClick={(e) => handleClear(e)}>
+          Clear filter
+        </Button>
       )}
     </div>
   );

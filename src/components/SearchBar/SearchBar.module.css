@@ -1,0 +1,16 @@
+.container {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.inputSearch {
+    outline: none;
+    border: 1px solid lightgray;
+    height: 30px;
+    width: 250px;
+}
+
+::placeholder {
+    font-size: 14px;
+}
