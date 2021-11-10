@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { formatNumber } from "../../utils";
 import style from "./Dashboard.module.css";
 
