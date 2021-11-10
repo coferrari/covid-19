@@ -22,7 +22,7 @@ To get a local copy up and running please read the following instructions.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/coferrari/pokeapp.git
+   git clone https://github.com/coferrari/covid-19.git
    ```
 2. Install NPM packages
    ```sh
