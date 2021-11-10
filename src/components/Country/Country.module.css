@@ -1,0 +1,9 @@
+.details {
+    font-size: 12px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .details {
+        font-size: 14px;
+    }
+}

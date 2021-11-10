@@ -1,41 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import { Table } from "react-bootstrap";
 import Country from "../Country/Country";
-import { countryOrder } from "../../redux/actions/index";
+import style from "./Statistics.module.css";
 
-const Statistics = ({ statistics }) => {
-  const [az, setAz] = useState(false);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(countryOrder(az))
-  }, [dispatch, az])
-
-  const handleOrderCountry = (e) => {
-    e.preventDefault()
-    setAz(!az);
-  }
-
+const Statistics = ({ statistics, loading, requestAPI }) => {
   return (
-    <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th onClick={handleOrderCountry}>Country</th>
-          <th>Continent</th>
-          <th>Population</th>
-          <th>Cases</th>
-          <th>Tests</th>
-          <th>Deaths</th>
-          <th>Last update</th>
-        </tr>
-      </thead>
-      <tbody>
-        {statistics?.map((country, i) => (
-          <Country key={i} country={country} />
-        ))}
-      </tbody>
-    </Table>
+    <div className="container">
+      {loading && requestAPI && <div className={style.loading}>Loading updated COVID-19 data...</div>}
+      {!loading && statistics && (
+        <Table striped bordered hover>
+          <thead>
+            <tr className={style.headers}>
+              <th>Country</th>
+              <th>Continent</th>
+              <th>Population</th>
+              <th>Cases</th>
+              <th>Tests</th>
+              <th>Deaths</th>
+              <th className={style.none}>Last update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {statistics?.map((country, i) => (
+              <Country key={i} country={country} />
+            ))}
+          </tbody>
+        </Table>
+      )}
+      {!statistics.length && !requestAPI && <div>No countries match your search, please try again</div>}
+    </div>
   );
 };
 

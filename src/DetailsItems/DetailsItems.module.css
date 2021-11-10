@@ -1,0 +1,13 @@
+.details {
+    font-size: 12px;
+}
+
+.criteria {
+    text-transform: capitalize;
+}
+
+@media only screen and (min-width: 1024px) {
+    .details {
+        font-size: 14px;
+    }
+}
