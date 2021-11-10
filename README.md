@@ -18,6 +18,18 @@ COVID-19 is a SPA (Single Page Application) developed using React.js and Redux. 
 
 To get a local copy up and running please read the following instructions.
 
+## Covid API
+
+Create an account in the following link https://rapidapi.com/api-sports/api/covid-193/details
+
+Then, create a .env file with the following information:
+
+   ```sh
+   REACT_APP_APIHost=covid-193.p.rapidapi.com
+   REACT_APP_APIKey=yourAPIkey
+   ```
+
+
 ### Installation
 
 1. Clone the repo
