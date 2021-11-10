@@ -6,7 +6,7 @@ import { formatNumber } from "../../utils/index";
 import Nav from "../Nav/Nav";
 import NotFound from "../NotFound/NotFound";
 import { Table } from "react-bootstrap";
-import DetailsItems from "../../DetailsItems/DetailsItems";
+import DetailsItems from "../DetailsItems/DetailsItems";
 import style from "./Details.module.css";
 import SearchBar from "../SearchBar/SearchBar";
 

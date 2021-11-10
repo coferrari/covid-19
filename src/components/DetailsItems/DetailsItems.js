@@ -1,5 +1,5 @@
 import React from "react";
-import { formatNumber } from "../utils/index";
+import { formatNumber } from "../../utils/index";
 import style from "./DetailsItems.module.css";
 
 const DetailsItems = ({ search, c }) => {
