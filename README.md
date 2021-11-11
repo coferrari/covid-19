@@ -2,10 +2,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+![Screen Shot 2021-11-10 at 21 53 57](https://user-images.githubusercontent.com/80214717/141217492-c118ee86-adc6-4f3f-a28f-5f1e4c92bc5d.png)
+
 
 COVID-19 is a SPA (Single Page Application) developed using React.js and Redux. It consumes external data from https://rapidapi.com/api-sports/api/covid-193/details
 
+
+### Functionalities
+
+* See global updated COVID-19 statistics
+* See countries grouped by continent
+* Dynamic search for a specific country
+* See detailed information from a country of choice
 
 ### Built With
 
