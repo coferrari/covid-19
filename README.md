@@ -2,7 +2,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Screen Shot 2021-11-10 at 21 53 57](https://user-images.githubusercontent.com/80214717/141217492-c118ee86-adc6-4f3f-a28f-5f1e4c92bc5d.png)
+![Screen Shot 2021-11-10 at 21 59 10](https://user-images.githubusercontent.com/80214717/141217925-d422bce4-9c71-4d4b-bcf3-53b29f669579.png)
 
 
 COVID-19 is a SPA (Single Page Application) developed using React.js and Redux. It consumes external data from https://rapidapi.com/api-sports/api/covid-193/details
